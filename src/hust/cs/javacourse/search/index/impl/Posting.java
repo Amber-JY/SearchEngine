@@ -2,8 +2,10 @@ package hust.cs.javacourse.search.index.impl;
 
 import hust.cs.javacourse.search.index.AbstractPosting;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collections;
 import java.util.List;
 
 public class Posting extends AbstractPosting {
@@ -22,6 +24,12 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public boolean equals(Object obj) {
+        if(obj instanceof Posting){
+            return ((Posting) obj).docId == docId &&
+                    ((Posting) obj).freq == freq &&
+                    ((Posting) obj).positions.equals(positions);
+
+        }
         return false;
     }
 
@@ -32,7 +40,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public String toString() {
-        return null;
+        return "{ docId: " + docId + " freq: " + freq + " positions: " + positions +" }";
     }
 
     /**
@@ -42,7 +50,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public int getDocId() {
-        return 0;
+        return docId;
     }
 
     /**
@@ -52,7 +60,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void setDocId(int docId) {
-
+        this.docId = docId;
     }
 
     /**
@@ -62,7 +70,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public int getFreq() {
-        return 0;
+        return freq;
     }
 
     /**
@@ -72,7 +80,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void setFreq(int freq) {
-
+        this.freq = freq;
     }
 
     /**
@@ -82,7 +90,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public List<Integer> getPositions() {
-        return null;
+        return positions;
     }
 
     /**
@@ -92,7 +100,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void setPositions(List<Integer> positions) {
-
+        this.positions = positions;
     }
 
     /**
@@ -103,7 +111,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public int compareTo(AbstractPosting o) {
-        return 0;
+        return this.docId = o.getDocId();
     }
 
     /**
@@ -111,7 +119,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void sort() {
-
+        Collections.sort(positions);
     }
 
     /**
@@ -121,7 +129,16 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void writeObject(ObjectOutputStream out) {
-
+        try {
+            out.writeObject(docId);
+            out.writeObject(freq);
+            out.writeObject(positions.size());
+            for(Integer position : positions){
+                out.writeObject(position);
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -131,6 +148,15 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void readObject(ObjectInputStream in) {
-
+        try{
+            docId = (int)in.readObject();
+            freq = (int)in.readObject();
+            int size = (int)in.readObject();
+            for(int i=0;i<size;i++){
+                positions.add((int)in.readObject());
+            }
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }
