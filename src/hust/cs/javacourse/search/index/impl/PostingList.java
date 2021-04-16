@@ -15,7 +15,9 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void add(AbstractPosting posting) {
-
+        if(!contains(posting)){
+            list.add(posting);
+        }
     }
 
     /**
@@ -25,7 +27,14 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        builder.append(list.get(0).toString());
+        for(int i =1;i<list.size();i++){
+            builder.append("->");
+            builder.append(list.get(i).toString());
+        }
+        builder.append("\n");
+        return builder.toString();
     }
 
     /**
