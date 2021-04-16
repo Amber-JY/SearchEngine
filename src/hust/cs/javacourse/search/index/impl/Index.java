@@ -8,6 +8,7 @@ import hust.cs.javacourse.search.index.AbstractTerm;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -15,13 +16,35 @@ import java.util.Set;
  */
 public class Index extends AbstractIndex {
     /**
+     * 构造函数
+     *
+     */
+    public Index(){}
+
+    /**
      * 返回索引的字符串表示
      *
      * @return 索引的字符串表示
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        builder.append("docId----docPath mapping\n");
+        //加入文档id和其对应的文档绝对路径
+        for(Map.Entry<Integer, String> entry : docIdToDocPathMapping.entrySet()){
+            builder.append(entry.getKey());//docId
+            builder.append("\t--->\t");
+            builder.append(entry.getValue());//docPath
+            builder.append("\n");
+        }
+        //加入term和对应的postinglist
+        for(Map.Entry<AbstractTerm, AbstractPostingList> entry : termToPostingListMapping.entrySet()){
+            builder.append(entry.getKey().toString());//term
+            builder.append("--->");
+            builder.append(entry.getValue().toString());//postingList
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 
     /**
@@ -64,7 +87,7 @@ public class Index extends AbstractIndex {
      */
     @Override
     public AbstractPostingList search(AbstractTerm term) {
-        return null;
+        return termToPostingListMapping.get(term);
     }
 
     /**
@@ -74,7 +97,7 @@ public class Index extends AbstractIndex {
      */
     @Override
     public Set<AbstractTerm> getDictionary() {
-        return null;
+        return termToPostingListMapping.keySet();
     }
 
     /**
@@ -87,7 +110,11 @@ public class Index extends AbstractIndex {
      */
     @Override
     public void optimize() {
-
+        for(Map.Entry<AbstractTerm, AbstractPostingList> entry : termToPostingListMapping.entrySet()){
+            for(int i=0;i<entry.getValue().size();i++){
+                entry.getValue().get(i).sort();
+            }
+        }
     }
 
     /**

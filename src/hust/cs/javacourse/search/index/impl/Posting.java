@@ -8,6 +8,13 @@ import java.util.List;
 
 public class Posting extends AbstractPosting {
     /**
+     * 构造函数
+     *
+     */
+    Posting(){}
+    Posting(int docId, int freq, List<Integer> q){super(docId, freq, q);}
+
+    /**
      * 判断二个Posting内容是否相同
      *
      * @param obj ：要比较的另外一个Posting
