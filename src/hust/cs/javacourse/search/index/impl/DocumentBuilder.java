@@ -4,9 +4,12 @@ import hust.cs.javacourse.search.index.AbstractDocument;
 import hust.cs.javacourse.search.index.AbstractDocumentBuilder;
 import hust.cs.javacourse.search.index.AbstractTermTuple;
 import hust.cs.javacourse.search.parse.AbstractTermTupleStream;
+import hust.cs.javacourse.search.parse.impl.LengthTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.PatternTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.StopWordTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.TermTupleScanner;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class DocumentBuilder extends AbstractDocumentBuilder {
     /**
@@ -43,6 +46,19 @@ public class DocumentBuilder extends AbstractDocumentBuilder {
      */
     @Override
     public AbstractDocument build(int docId, String docPath, File file) {
-        return null;
+        AbstractDocument document = null;
+        AbstractTermTupleStream termTupleStream = null;
+        //处理读取和过滤过程中的Exception
+        try{
+            termTupleStream = new TermTupleScanner(new BufferedReader(new InputStreamReader(new FileInputStream(file))));
+            //按什么顺序比较好呢？
+            termTupleStream = new LengthTermTupleFilter(new PatternTermTupleFilter(new StopWordTermTupleFilter(termTupleStream)));
+            document = build(docId, docPath, termTupleStream);
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            termTupleStream.close();
+        }
+        return document;
     }
 }
