@@ -104,14 +104,14 @@ public class Posting extends AbstractPosting {
     }
 
     /**
-     * 比较二个Posting对象的大小（根据docId）
+     * 比较二个Posting对象的大小（根据docId）,可用于对postingList的排序
      *
      * @param o ： 另一个Posting对象
      * @return ：二个Posting对象的docId的差值
      */
     @Override
     public int compareTo(AbstractPosting o) {
-        return this.docId = o.getDocId();
+        return this.docId - o.getDocId();
     }
 
     /**

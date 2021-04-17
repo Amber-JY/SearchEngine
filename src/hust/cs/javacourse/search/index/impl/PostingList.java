@@ -3,8 +3,10 @@ package hust.cs.javacourse.search.index.impl;
 import hust.cs.javacourse.search.index.AbstractPosting;
 import hust.cs.javacourse.search.index.AbstractPostingList;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collections;
 import java.util.List;
 
 public class PostingList extends AbstractPostingList {
@@ -44,7 +46,9 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void add(List<AbstractPosting> postings) {
-
+        for(AbstractPosting posting : postings){
+            add(posting);//调用加入单个posting的函数
+        }
     }
 
     /**
@@ -54,9 +58,7 @@ public class PostingList extends AbstractPostingList {
      * @return： 指定下标位置的Posting
      */
     @Override
-    public AbstractPosting get(int index) {
-        return null;
-    }
+    public AbstractPosting get(int index) {return list.get(index); }
 
     /**
      * 返回指定Posting对象的下标
@@ -66,7 +68,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public int indexOf(AbstractPosting posting) {
-        return 0;
+        return list.indexOf(posting);
     }
 
     /**
@@ -77,7 +79,12 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public int indexOf(int docId) {
-        return 0;
+        for(AbstractPosting posting : list){
+            if(posting.getDocId() == docId){
+                return list.indexOf(posting);
+            }
+        }
+        return -1;
     }
 
     /**
@@ -88,7 +95,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public boolean contains(AbstractPosting posting) {
-        return false;
+        return list.contains(posting);
     }
 
     /**
@@ -98,7 +105,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void remove(int index) {
-
+        list.remove(index);
     }
 
     /**
@@ -108,7 +115,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void remove(AbstractPosting posting) {
-
+        list.remove(posting);
     }
 
     /**
@@ -118,7 +125,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 
     /**
@@ -126,7 +133,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void clear() {
-
+        list.clear();
     }
 
     /**
@@ -136,7 +143,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 
     /**
@@ -144,7 +151,8 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void sort() {
-
+        //FIX: sort函数调用post子类的compareTo函数进行排序?
+        Collections.sort(list);
     }
 
     /**
@@ -154,7 +162,14 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void writeObject(ObjectOutputStream out) {
-
+        try {
+            out.writeObject(list.size());//单个数据可以直接输出
+            for(AbstractPosting posting : list){
+                posting.writeObject(out);//使用封装过的流输出函数
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -164,6 +179,15 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void readObject(ObjectInputStream in) {
-
+            try{
+                int size = (Integer) in.readObject();
+                for(int i=0;i<size;i++){
+                    AbstractPosting posting = new Posting();
+                    posting.readObject(in);
+                    list.add(posting);
+                }
+            }catch (IOException | ClassNotFoundException e){
+                e.printStackTrace();
+            }
     }
 }
