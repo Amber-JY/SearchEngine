@@ -1,8 +1,14 @@
 package hust.cs.javacourse.search.index.impl;
 
+import hust.cs.javacourse.search.index.AbstractDocument;
 import hust.cs.javacourse.search.index.AbstractDocumentBuilder;
 import hust.cs.javacourse.search.index.AbstractIndex;
 import hust.cs.javacourse.search.index.AbstractIndexBuilder;
+import hust.cs.javacourse.search.util.FileUtil;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 public class IndexBuilder extends AbstractIndexBuilder {
     /**
@@ -20,7 +26,21 @@ public class IndexBuilder extends AbstractIndexBuilder {
      * </pre>
      */
     @Override
-    public AbstractIndex buildIndex(String rootDirectory) {
-        return null;
+    public AbstractIndex buildIndex(String rootDirectory) throws IOException {
+        AbstractIndex index = new Index();
+        List<String> filePaths = FileUtil.list(rootDirectory);//获得根路径下的所有文件路径
+        AbstractDocumentBuilder builder = null;
+
+        for(String path : filePaths){
+            AbstractDocument document = builder.build(docId, path, new File(path));
+            if(document!=null){
+                index.addDocument(document);
+                docId++;
+            }else{
+                throw new IOException("build document error.");//读取文档出错，抛出异常
+            }
+
+        }
+        return index;
     }
 }
