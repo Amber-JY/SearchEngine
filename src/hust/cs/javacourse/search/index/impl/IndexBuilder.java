@@ -39,7 +39,6 @@ public class IndexBuilder extends AbstractIndexBuilder {
             }else{
                 throw new IOException("build document error.");//读取文档出错，抛出异常
             }
-
         }
         return index;
     }
