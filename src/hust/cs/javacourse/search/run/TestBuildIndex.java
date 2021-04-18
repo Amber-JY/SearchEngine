@@ -29,20 +29,21 @@ public class TestBuildIndex {
         AbstractIndex index = indexBuilder.buildIndex(testDocDir);
         System.out.println("OK. The content is as following:");
         //输出index内容
-        System.out.println(index.toString());
+        System.out.println(index);
         //保存路径
         String indexFile = Config.INDEX_DIR + "index.bat";
         String indexFile_ = Config.INDEX_DIR + "index.txt";
         index.save(new File(indexFile));
         ((Index) index).saveAsText(new File(indexFile_));//保存为txt
 
-
+        /*
         //从保存的index中加载，输出对比。
         System.out.println("---------------------------");
         AbstractIndex index_ = new Index();
         System.out.println("Rebuilding index...");
         index_.load(new File(indexFile));
         System.out.println("OK. The content is as following:");
-        System.out.println(index_.toString());
+        System.out.println(index_);
+        */
     }
 }
