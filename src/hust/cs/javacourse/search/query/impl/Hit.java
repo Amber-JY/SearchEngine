@@ -7,6 +7,14 @@ import hust.cs.javacourse.search.query.AbstractHit;
 import java.util.Map;
 
 public class Hit extends AbstractHit {
+    /**
+     * 构造函数
+     */
+    public Hit(){}
+    public Hit(int docId, String docPath){super(docId, docPath);}
+    public Hit(int docId, String docPath, Map<AbstractTerm, AbstractPosting> termAbstractPostingMap){
+        super(docId, docPath, termAbstractPostingMap);
+    }
 
     /**
      * 获得文档id
@@ -15,7 +23,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public int getDocId() {
-        return 0;
+        return docId;
     }
 
     /**
@@ -25,7 +33,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public String getDocPath() {
-        return null;
+        return docPath;
     }
 
     /**
@@ -35,7 +43,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public String getContent() {
-        return null;
+        return content;
     }
 
     /**
@@ -45,7 +53,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public void setContent(String content) {
-
+        this.content = content;
     }
 
     /**
@@ -55,7 +63,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public double getScore() {
-        return 0;
+        return score;
     }
 
     /**
@@ -65,7 +73,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public void setScore(double score) {
-
+        this.score = score;
     }
 
     /**
@@ -75,7 +83,7 @@ public class Hit extends AbstractHit {
      */
     @Override
     public Map<AbstractTerm, AbstractPosting> getTermPostingMapping() {
-        return null;
+        return termPostingMapping;
     }
 
     /**
@@ -85,7 +93,14 @@ public class Hit extends AbstractHit {
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        builder.append("-------------Hit-------------\n");
+        builder.append("docId: ").append(docId).append(" docPath: ").append(docPath).append("\nscore: ").append(score);
+        builder.append("\n");
+        for(Map.Entry<AbstractTerm, AbstractPosting>entry : termPostingMapping.entrySet()){
+            builder.append(entry.getKey().getContent()).append("\t---->\t").append(entry.getValue().toString()).append("\n");
+        }
+        return builder.toString();
     }
 
     /**
@@ -96,6 +111,6 @@ public class Hit extends AbstractHit {
      */
     @Override
     public int compareTo(AbstractHit o) {
-        return 0;
+        return (int) (score - o.getScore());
     }
 }
