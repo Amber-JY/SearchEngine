@@ -8,6 +8,7 @@ import hust.cs.javacourse.search.util.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class IndexBuilder extends AbstractIndexBuilder {
@@ -29,11 +30,8 @@ public class IndexBuilder extends AbstractIndexBuilder {
     public AbstractIndex buildIndex(String rootDirectory) throws IOException {
         AbstractIndex index = new Index();
         List<String> filePaths = FileUtil.list(rootDirectory);//获得根路径下的所有文件路径
-        AbstractDocumentBuilder builder = null;
-
         for(String path : filePaths){
-            System.out.println(path);
-            AbstractDocument document = builder.build(docId, path, new File(path));
+            AbstractDocument document = docBuilder.build(docId, path, new File(path));
             if(document!=null){
                 index.addDocument(document);
                 docId++;

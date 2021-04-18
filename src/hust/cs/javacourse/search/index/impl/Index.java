@@ -22,7 +22,7 @@ public class Index extends AbstractIndex {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("docId----docPath mapping\n");
+        builder.append("docId\t----\tdocPath mapping\n");
         //加入文档id和其对应的文档绝对路径
         for (Map.Entry<Integer, String> entry : docIdToDocPathMapping.entrySet()) {
             builder.append(entry.getKey());//docId
@@ -33,7 +33,7 @@ public class Index extends AbstractIndex {
         //加入term和对应的postinglist
         for (Map.Entry<AbstractTerm, AbstractPostingList> entry : termToPostingListMapping.entrySet()) {
             builder.append(entry.getKey().toString());//term
-            builder.append("--->");
+            builder.append("\t--->\t");
             builder.append(entry.getValue().toString());//postingList
             builder.append("\n");
         }
@@ -54,7 +54,7 @@ public class Index extends AbstractIndex {
             if(!termToPostingListMapping.containsKey(termTuple.term)){
                 //新加入一个term到postingList的k-v
                 AbstractPostingList postingList = new PostingList();
-                LinkedList<Integer> linkedList = new LinkedList<Integer>();
+                LinkedList<Integer> linkedList = new LinkedList<>();
                 linkedList.add(termTuple.curPos);
                 AbstractPosting posting = new Posting(document.getDocId(), termTuple.freq, linkedList);
                 postingList.add(posting);
@@ -107,6 +107,21 @@ public class Index extends AbstractIndex {
     public void save(File file) {
         try{
             writeObject(new ObjectOutputStream(new FileOutputStream(file)));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 保存为txt文件，用于提交检查
+     *
+     * @param file
+     */
+    public void saveAsText(File file){
+        try{
+            FileWriter fw = new FileWriter(file);
+            fw.write(toString());
+            fw.close();
         }catch(IOException e){
             e.printStackTrace();
         }

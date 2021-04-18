@@ -32,7 +32,10 @@ public class TestBuildIndex {
         System.out.println(index.toString());
         //保存路径
         String indexFile = Config.INDEX_DIR + "index.bat";
+        String indexFile_ = Config.INDEX_DIR + "index.txt";
         index.save(new File(indexFile));
+        ((Index) index).saveAsText(new File(indexFile_));//保存为txt
+
 
         //从保存的index中加载，输出对比。
         System.out.println("---------------------------");

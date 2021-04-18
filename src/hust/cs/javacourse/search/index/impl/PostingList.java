@@ -32,7 +32,7 @@ public class PostingList extends AbstractPostingList {
         StringBuilder builder = new StringBuilder();
         builder.append(list.get(0).toString());
         for(int i =1;i<list.size();i++){
-            builder.append("->");
+            builder.append(" --> ");
             builder.append(list.get(i).toString());
         }
         builder.append("\n");
