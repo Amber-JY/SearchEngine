@@ -2,10 +2,8 @@ package hust.cs.javacourse.search.query;
 
 import hust.cs.javacourse.search.index.AbstractPosting;
 import hust.cs.javacourse.search.index.AbstractTerm;
-import hust.cs.javacourse.search.index.AbstractTermTuple;
 import hust.cs.javacourse.search.util.FileUtil;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 

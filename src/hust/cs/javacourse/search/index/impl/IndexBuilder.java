@@ -15,7 +15,7 @@ public class IndexBuilder extends AbstractIndexBuilder {
      * 构造函数
      * @param docBuilder 建立index中的文档
      */
-    IndexBuilder(AbstractDocumentBuilder docBuilder){super(docBuilder);}
+    public IndexBuilder(AbstractDocumentBuilder docBuilder){super(docBuilder);}
 
     /**
      * <pre>
@@ -32,6 +32,7 @@ public class IndexBuilder extends AbstractIndexBuilder {
         AbstractDocumentBuilder builder = null;
 
         for(String path : filePaths){
+            System.out.println(path);
             AbstractDocument document = builder.build(docId, path, new File(path));
             if(document!=null){
                 index.addDocument(document);
@@ -40,6 +41,7 @@ public class IndexBuilder extends AbstractIndexBuilder {
                 throw new IOException("build document error.");//读取文档出错，抛出异常
             }
         }
+        index.optimize();
         return index;
     }
 }

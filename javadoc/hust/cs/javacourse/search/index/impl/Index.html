@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">hust.cs.javacourse.search.index.AbstractIndex</a></li>
+<li><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">hust.cs.javacourse.search.index.AbstractIndex</a></li>
 <li>
 <ul class="inheritance">
 <li>hust.cs.javacourse.search.index.impl.Index</li>
@@ -115,12 +115,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>所有已实现的接口:</dt>
-<dd><a href="../../../../../../hust/cs/javacourse/search/index/FileSerializable.html" title="hust.cs.javacourse.search.index中的接口">FileSerializable</a>, java.io.Serializable</dd>
+<dd><a href="../FileSerializable.html" title="hust.cs.javacourse.search.index中的接口">FileSerializable</a>, java.io.Serializable</dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">Index</span>
-extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></pre>
+extends <a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></pre>
 <div class="block">AbstractIndex的具体实现类</div>
 <dl>
 <dt><span class="seeLabel">另请参阅:</span></dt>
@@ -142,8 +142,8 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <li class="blockList"><a name="fields.inherited.from.class.hust.cs.javacourse.search.index.AbstractIndex">
 <!--   -->
 </a>
-<h3>从类继承的字段&nbsp;hust.cs.javacourse.search.index.<a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></h3>
-<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#docIdToDocPathMapping">docIdToDocPathMapping</a>, <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#termToPostingListMapping">termToPostingListMapping</a></code></li>
+<h3>从类继承的字段&nbsp;hust.cs.javacourse.search.index.<a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></h3>
+<code><a href="../AbstractIndex.html#docIdToDocPathMapping">docIdToDocPathMapping</a>, <a href="../AbstractIndex.html#termToPostingListMapping">termToPostingListMapping</a></code></li>
 </ul>
 </li>
 </ul>
@@ -178,12 +178,12 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../hust/cs/javacourse/search/index/impl/Index.html#addDocument-hust.cs.javacourse.search.index.AbstractDocument-">addDocument</a></span>(<a href="../../../../../../hust/cs/javacourse/search/index/AbstractDocument.html" title="hust.cs.javacourse.search.index中的类">AbstractDocument</a>&nbsp;document)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../hust/cs/javacourse/search/index/impl/Index.html#addDocument-hust.cs.javacourse.search.index.AbstractDocument-">addDocument</a></span>(<a href="../AbstractDocument.html" title="hust.cs.javacourse.search.index中的类">AbstractDocument</a>&nbsp;document)</code>
 <div class="block">添加文档到索引，更新索引内部的HashMap</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../hust/cs/javacourse/search/index/AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.Set&lt;<a href="../AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../hust/cs/javacourse/search/index/impl/Index.html#getDictionary--">getDictionary</a></span>()</code>
 <div class="block">返回索引的字典.字典为索引里所有单词的并集</div>
 </td>
@@ -226,8 +226,8 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractPostingList.html" title="hust.cs.javacourse.search.index中的类">AbstractPostingList</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../hust/cs/javacourse/search/index/impl/Index.html#search-hust.cs.javacourse.search.index.AbstractTerm-">search</a></span>(<a href="../../../../../../hust/cs/javacourse/search/index/AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&nbsp;term)</code>
+<td class="colFirst"><code><a href="../AbstractPostingList.html" title="hust.cs.javacourse.search.index中的类">AbstractPostingList</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../hust/cs/javacourse/search/index/impl/Index.html#search-hust.cs.javacourse.search.index.AbstractTerm-">search</a></span>(<a href="../AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&nbsp;term)</code>
 <div class="block">返回指定单词的PostingList</div>
 </td>
 </tr>
@@ -292,7 +292,7 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <div class="block">返回索引的字符串表示</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#toString--">toString</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#toString--">toString</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="returnLabel">返回:</span></dt>
 <dd>索引的字符串表示</dd>
 </dl>
@@ -304,11 +304,11 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <ul class="blockList">
 <li class="blockList">
 <h4>addDocument</h4>
-<pre>public&nbsp;void&nbsp;addDocument(<a href="../../../../../../hust/cs/javacourse/search/index/AbstractDocument.html" title="hust.cs.javacourse.search.index中的类">AbstractDocument</a>&nbsp;document)</pre>
+<pre>public&nbsp;void&nbsp;addDocument(<a href="../AbstractDocument.html" title="hust.cs.javacourse.search.index中的类">AbstractDocument</a>&nbsp;document)</pre>
 <div class="block">添加文档到索引，更新索引内部的HashMap</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#addDocument-hust.cs.javacourse.search.index.AbstractDocument-">addDocument</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#addDocument-hust.cs.javacourse.search.index.AbstractDocument-">addDocument</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="paramLabel">参数:</span></dt>
 <dd><code>document</code> - ：文档的AbstractDocument子类型表示</dd>
 </dl>
@@ -325,7 +325,7 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
  从索引文件里加载已经构建好的索引.内部调用FileSerializable接口方法readObject即可</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#load-java.io.File-">load</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#load-java.io.File-">load</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="paramLabel">参数:</span></dt>
 <dd><code>file</code> - ：索引文件
  </pre></dd>
@@ -343,7 +343,7 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
  将在内存里构建好的索引写入到文件. 内部调用FileSerializable接口方法writeObject即可</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#save-java.io.File-">save</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#save-java.io.File-">save</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="paramLabel">参数:</span></dt>
 <dd><code>file</code> - ：写入的目标索引文件
  </pre></dd>
@@ -356,11 +356,11 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <ul class="blockList">
 <li class="blockList">
 <h4>search</h4>
-<pre>public&nbsp;<a href="../../../../../../hust/cs/javacourse/search/index/AbstractPostingList.html" title="hust.cs.javacourse.search.index中的类">AbstractPostingList</a>&nbsp;search(<a href="../../../../../../hust/cs/javacourse/search/index/AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&nbsp;term)</pre>
+<pre>public&nbsp;<a href="../AbstractPostingList.html" title="hust.cs.javacourse.search.index中的类">AbstractPostingList</a>&nbsp;search(<a href="../AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&nbsp;term)</pre>
 <div class="block">返回指定单词的PostingList</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#search-hust.cs.javacourse.search.index.AbstractTerm-">search</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#search-hust.cs.javacourse.search.index.AbstractTerm-">search</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="paramLabel">参数:</span></dt>
 <dd><code>term</code> - : 指定的单词</dd>
 <dt><span class="returnLabel">返回:</span></dt>
@@ -374,11 +374,11 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <ul class="blockList">
 <li class="blockList">
 <h4>getDictionary</h4>
-<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../hust/cs/javacourse/search/index/AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&gt;&nbsp;getDictionary()</pre>
+<pre>public&nbsp;java.util.Set&lt;<a href="../AbstractTerm.html" title="hust.cs.javacourse.search.index中的类">AbstractTerm</a>&gt;&nbsp;getDictionary()</pre>
 <div class="block">返回索引的字典.字典为索引里所有单词的并集</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#getDictionary--">getDictionary</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#getDictionary--">getDictionary</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="returnLabel">返回:</span></dt>
 <dd>：索引中Term列表</dd>
 </dl>
@@ -399,7 +399,7 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
  </pre></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#optimize--">optimize</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#optimize--">optimize</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -413,7 +413,7 @@ extends <a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex
 <div class="block">根据docId获得对应文档的完全路径名</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">指定者:</span></dt>
-<dd><code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html#getDocName-int-">getDocName</a></code>&nbsp;在类中&nbsp;<code><a href="../../../../../../hust/cs/javacourse/search/index/AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
+<dd><code><a href="../AbstractIndex.html#getDocName-int-">getDocName</a></code>&nbsp;在类中&nbsp;<code><a href="../AbstractIndex.html" title="hust.cs.javacourse.search.index中的类">AbstractIndex</a></code></dd>
 <dt><span class="paramLabel">参数:</span></dt>
 <dd><code>docId</code> - ：文档id</dd>
 <dt><span class="returnLabel">返回:</span></dt>

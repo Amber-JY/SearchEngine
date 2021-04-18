@@ -1,8 +1,5 @@
 package hust.cs.javacourse.search.index;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * <pre>
  * AbstractTermTuple是所有TermTuple对象的抽象父类.
