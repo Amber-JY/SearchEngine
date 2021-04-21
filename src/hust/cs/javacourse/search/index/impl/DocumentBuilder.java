@@ -57,6 +57,7 @@ public class DocumentBuilder extends AbstractDocumentBuilder {
         }catch (IOException e){
             e.printStackTrace();
         }finally {
+            assert termTupleStream != null;
             termTupleStream.close();
         }
         return document;
