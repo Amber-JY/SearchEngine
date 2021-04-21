@@ -12,7 +12,6 @@ import java.io.IOException;
  * </pre>
  */
 public abstract class AbstractDocumentBuilder {
-
     /**
      * <pre>
      * 由解析文本文档得到的TermTupleStream,构造Document对象.
@@ -44,5 +43,5 @@ public abstract class AbstractDocumentBuilder {
      * @return          : Document对象
      * </pre>
      */
-    public abstract AbstractDocument build(int docId, String docPath, File file);
+    public abstract AbstractDocument build(int docId, String docPath, File file) throws IOException;
 }
