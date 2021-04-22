@@ -28,8 +28,9 @@ public class IndexBuilder extends AbstractIndexBuilder {
      */
     @Override
     public AbstractIndex buildIndex(String rootDirectory) throws IOException {
+        AbstractIndex index = new Index();
         if(rootDirectory!=null){
-            AbstractIndex index = new Index();
+            //AbstractIndex index = new Index();
             List<String> filePaths = FileUtil.list(rootDirectory);//获得根路径下的所有文件路径
             for(String path : filePaths){
                 AbstractDocument document = docBuilder.build(docId, path, new File(path));
@@ -41,8 +42,9 @@ public class IndexBuilder extends AbstractIndexBuilder {
                 }
             }
             index.optimize();
-            return index;
+            //return index;
         }
-        return null;
+        return index;
+        //return null;
     }
 }

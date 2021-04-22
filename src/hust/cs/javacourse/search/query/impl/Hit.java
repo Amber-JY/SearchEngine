@@ -95,7 +95,7 @@ public class Hit extends AbstractHit {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("**************Hit**************\n");
-        builder.append("docId: ").append(docId).append(" docPath: ").append(docPath).append("\nscore: ").append(score);
+        builder.append("docId: ").append(docId).append(" docPath: ").append(docPath).append("\nscore: ").append(score).append("\ncontent: ").append(content);
         builder.append("\n");
         for(Map.Entry<AbstractTerm, AbstractPosting>entry : termPostingMapping.entrySet()){
             builder.append(entry.getKey().getContent()).append("\t---->\t").append(entry.getValue().toString()).append("\n");

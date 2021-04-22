@@ -12,6 +12,7 @@ import java.io.IOException;
  * </pre>
  */
 public abstract class AbstractDocumentBuilder {
+    public AbstractDocumentBuilder(){}
     /**
      * <pre>
      * 由解析文本文档得到的TermTupleStream,构造Document对象.
