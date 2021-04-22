@@ -13,8 +13,8 @@ public class Posting extends AbstractPosting {
      * 构造函数
      *
      */
-    Posting(){}
-    Posting(int docId, int freq, List<Integer> q){super(docId, freq, q);}
+    public Posting(){}
+    public Posting(int docId, int freq, List<Integer> q){super(docId, freq, q);}
 
     /**
      * 判断二个Posting内容是否相同
