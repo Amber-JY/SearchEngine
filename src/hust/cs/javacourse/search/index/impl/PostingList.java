@@ -29,6 +29,9 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public String toString() {
+        if(list.isEmpty()){
+            return "";
+        }
         StringBuilder builder = new StringBuilder();
         builder.append(list.get(0).toString());
         for(int i =1;i<list.size();i++){

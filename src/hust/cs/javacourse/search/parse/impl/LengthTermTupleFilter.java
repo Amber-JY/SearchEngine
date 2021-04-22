@@ -26,7 +26,7 @@ public class LengthTermTupleFilter extends AbstractTermTupleFilter {
         if (temTuple == null){
             return null;
         }
-        while(temTuple.term.getContent().length() > Config.TERM_FILTER_MAXLENGTH || temTuple.term.getContent().length()<Config.TERM_FILTER_MINLENGTH){
+        while(temTuple.term.getContent().length() > Config.TERM_FILTER_MAXLENGTH | temTuple.term.getContent().length()<Config.TERM_FILTER_MINLENGTH){
             temTuple = input.next();
             if (temTuple == null) {
                 return null;
