@@ -27,8 +27,8 @@ public class Posting extends AbstractPosting {
         if(obj instanceof Posting){
             return ((Posting) obj).docId == docId &&
                     ((Posting) obj).freq == freq &&
-                    ((Posting) obj).positions.equals(positions);
-
+                    ((Posting) obj).positions.containsAll(positions) &&
+                    ((Posting) obj).positions.size() == positions.size();
         }
         return false;
     }

@@ -10,7 +10,7 @@ public interface Sort {
      * 对命中结果集合根据文档得分排序
      * @param hits ：命中结果集合
      */
-    public abstract  void sort(List<AbstractHit> hits);
+    void sort(List<AbstractHit> hits);
 
     /**
      * <pre>
@@ -23,5 +23,5 @@ public interface Sort {
      * @return ：命中文档的得分
      * </pre>
      */
-    public  abstract double score(AbstractHit hit);
+    double score(AbstractHit hit);
 }
