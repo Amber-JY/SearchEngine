@@ -18,7 +18,7 @@ public class TermTupleScanner extends AbstractTermTupleScanner {
         super(input);
     }
 
-    int pos;
+    int pos = 0;
     Queue<AbstractTermTuple> buffer = new LinkedList<>();
 
     /**
