@@ -47,38 +47,40 @@ public class Index extends AbstractIndex {
      */
     @Override
     public void addDocument(AbstractDocument document) {
-        //先加入docID到docPath的映射，然后根据其中每一个term进行处理
-        docIdToDocPathMapping.put(document.getDocId(), document.getDocPath());
-        for(AbstractTermTuple termTuple : document.getTuples()){
-            //如果倒排索引中不包含当前term
-            if(!termToPostingListMapping.containsKey(termTuple.term)){
-                //新加入一个term到postingList的k-v
-                AbstractPostingList postingList = new PostingList();
-                LinkedList<Integer> linkedList = new LinkedList<>();
-                linkedList.add(termTuple.curPos);
-                AbstractPosting posting = new Posting(document.getDocId(), termTuple.freq, linkedList);
-                postingList.add(posting);
-                termToPostingListMapping.put(termTuple.term, postingList);
-            }else{
-                //如果包含该term，分posting中是否有当前docID来处理
-                AbstractPostingList postingList = termToPostingListMapping.get(termTuple.term);
-                boolean flag = true;
-                for(int i=0;i<postingList.size();i++){
-                    //如果有posting的docId 为该document 的docId
-                    if(postingList.get(i).getDocId() == document.getDocId()){
-                        postingList.get(i).getPositions().add(termTuple.curPos);
-                        postingList.get(i).setFreq(postingList.get(i).getFreq()+1);
-                        flag = false;
+        if(document != null){
+            //先加入docID到docPath的映射，然后根据其中每一个term进行处理
+            docIdToDocPathMapping.put(document.getDocId(), document.getDocPath());
+            for(AbstractTermTuple termTuple : document.getTuples()){
+                //如果倒排索引中不包含当前term
+                if(!termToPostingListMapping.containsKey(termTuple.term)){
+                    //新加入一个term到postingList的k-v
+                    AbstractPostingList postingList = new PostingList();
+                    LinkedList<Integer> linkedList = new LinkedList<>();
+                    linkedList.add(termTuple.curPos);
+                    AbstractPosting posting = new Posting(document.getDocId(), termTuple.freq, linkedList);
+                    postingList.add(posting);
+                    termToPostingListMapping.put(termTuple.term, postingList);
+                }else{
+                    //如果包含该term，分posting中是否有当前docID来处理
+                    AbstractPostingList postingList = termToPostingListMapping.get(termTuple.term);
+                    boolean flag = true;
+                    for(int i=0;i<postingList.size();i++){
+                        //如果有posting的docId 为该document 的docId
+                        if(postingList.get(i).getDocId() == document.getDocId()){
+                            postingList.get(i).getPositions().add(termTuple.curPos);
+                            postingList.get(i).setFreq(postingList.get(i).getFreq()+1);
+                            flag = false;
+                        }
+                    }
+                    if(flag){
+                        List<Integer> positions = new ArrayList<>();
+                        positions.add(termTuple.curPos);
+                        AbstractPosting posting = new Posting(document.getDocId(), termTuple.freq, positions);
+                        termToPostingListMapping.get(termTuple.term).add(posting);
                     }
                 }
-                if(flag){
-                    List<Integer> positions = new ArrayList<>();
-                    positions.add(termTuple.curPos);
-                    AbstractPosting posting = new Posting(document.getDocId(), termTuple.freq, positions);
-                    termToPostingListMapping.get(termTuple.term).add(posting);
-                }
+                optimize();
             }
-            optimize();
         }
     }
 
@@ -90,10 +92,12 @@ public class Index extends AbstractIndex {
      */
     @Override
     public void load(File file) {
-        try {
-            readObject(new ObjectInputStream(new FileInputStream(file)));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(file != null){
+            try {
+                readObject(new ObjectInputStream(new FileInputStream(file)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -105,10 +109,12 @@ public class Index extends AbstractIndex {
      */
     @Override
     public void save(File file) {
-        try{
-            writeObject(new ObjectOutputStream(new FileOutputStream(file)));
-        }catch(IOException e){
-            e.printStackTrace();
+        if(file != null) {
+            try {
+                writeObject(new ObjectOutputStream(new FileOutputStream(file)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -174,7 +180,10 @@ public class Index extends AbstractIndex {
      */
     @Override
     public String getDocName(int docId) {
-        return docIdToDocPathMapping.get(docId);
+        if(this.docIdToDocPathMapping != null){
+            return docIdToDocPathMapping.get(docId);
+        }
+        return "";
     }
 
     /**

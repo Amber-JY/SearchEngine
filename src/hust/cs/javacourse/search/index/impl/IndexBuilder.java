@@ -28,18 +28,21 @@ public class IndexBuilder extends AbstractIndexBuilder {
      */
     @Override
     public AbstractIndex buildIndex(String rootDirectory) throws IOException {
-        AbstractIndex index = new Index();
-        List<String> filePaths = FileUtil.list(rootDirectory);//获得根路径下的所有文件路径
-        for(String path : filePaths){
-            AbstractDocument document = docBuilder.build(docId, path, new File(path));
-            if(document!=null){
-                index.addDocument(document);
-                docId++;
-            }else{
-                throw new IOException("build document error.");//读取文档出错，抛出异常
+        if(rootDirectory!=null){
+            AbstractIndex index = new Index();
+            List<String> filePaths = FileUtil.list(rootDirectory);//获得根路径下的所有文件路径
+            for(String path : filePaths){
+                AbstractDocument document = docBuilder.build(docId, path, new File(path));
+                if(document!=null){
+                    index.addDocument(document);
+                    docId++;
+                }else{
+                    throw new IOException("build document error.");//读取文档出错，抛出异常
+                }
             }
+            index.optimize();
+            return index;
         }
-        index.optimize();
-        return index;
+        return null;
     }
 }

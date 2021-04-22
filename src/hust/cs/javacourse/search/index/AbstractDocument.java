@@ -16,15 +16,15 @@ public abstract class AbstractDocument {
     /**
      * 文档id
      */
-    protected int docId;
+    public int docId;
     /**
      * 文档绝对路径
      */
-    protected String docPath;
+    public String docPath;
     /**
      * 文档包含的三元组列表
      */
-    protected List<AbstractTermTuple> tuples = new ArrayList<AbstractTermTuple>();
+    public List<AbstractTermTuple> tuples = new ArrayList<>();
 
     /**
      * 缺省构造函数
